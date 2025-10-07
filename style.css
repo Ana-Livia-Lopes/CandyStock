@@ -12,11 +12,12 @@ body {
 
 /* Cabeçalho */
 .cabecalho {
-  background: url('imagemFundo.png') no-repeat center center/cover;
+  background: url('img/imagemFundo.png') no-repeat center center/cover;
   filter: brightness(1.0);
-  height: 500px;
+  height: 80vh;
   padding: 20px;
   color: #fff;
+  width: 100%;
  
 }
 
@@ -27,7 +28,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.6); 
+  background: rgba(0, 0, 0, 0.74); 
   z-index: -1; 
 }
 .menu {
@@ -55,11 +56,17 @@ body {
 .texto-cabecalho h1 {
   margin-top: 100px;
   font-size: 3.5rem;
-  margin-left: 150px
+  margin-left: 150px;
+
 }
 
 .texto-cabecalho span {
-  color: #DCB536;
+  color: #e8c869;
+}
+
+.texto-cabecalho b{
+  color: #CA7188  ;
+  font-weight: 700;
 }
 
 /* Resumo */
@@ -74,7 +81,7 @@ body {
 }
 
 .caixa-resumo {
-  background: #444444;
+  background: #343434ed;
   color: white;
   padding: 40px;
   border-radius: 10px;
@@ -121,12 +128,40 @@ body {
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
+#caixa-img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
 .caixa-produto img {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
   margin-right: 20px;
 }
+
+#botao-add{
+  background-color: #6B3F82;
+  padding: 12px;
+  width: 205px;
+  border-radius: 10px;
+}
+
+#botao-add a{
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.comment{
+  display: flex;
+  justify-content: space-between;
+
+}
+
 
 .info h2 {
   font-size: 1.2rem;
