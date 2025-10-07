@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Estoque</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <div class="cabecalho">
+    <div class="menu">
+      <img src="logo.png" alt="logo" class="logo">
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">6</a></li>
+        <li><a href="#">7</a></li>
+      </ul>
+    </div>
+    <div class="texto-cabecalho">
+      <h1>Controle seu <br><span>ESTOQUE</span><br> hoje</h1>
+    </div>
+  </div>
+
+  <!-- Resumo -->
+  <div class="resumo">
+    <div class="caixa-resumo">
+      <p>📦 1138 Produtos</p>
+    </div>
+    <div class="caixa-resumo">
+      <p>✔️ 904 Sem falta</p>
+    </div>
+    <div class="caixa-resumo">
+      <p>❌ 234 Em falta</p>
+    </div>
+  </div>
+
+  <!-- Pesquisa -->
+  <div class="pesquisa">
+    <input type="text" placeholder="Ex.: Trufa de chocolate">
+  </div>
+
+  <!-- Produtos -->
+  <div class="produtos">
+
+    <div class="caixa-produto">
+      <img src="#" alt="Trufa de chocolate">
+      <div class="info">
+        <h2>TRUFA DE CHOCOLATE</h2>
+        <p>Quantidade: 1465</p>
+        <div class="botoes">
+          <button>:D</button>
+          <button>:|</button>
+          <button>:o</button>
+        </div>
+        <p class="descricao">Descrição que vou fazer depois</p>
+      </div>
+    </div>
+
+    <div class="caixa-produto">
+      <img src="#" alt="Fini">
+      <div class="info">
+        <h2>Pacote FINI Dentaduras</h2>
+        <p>Quantidade: 125</p>
+        <div class="botoes">
+          <button>:D</button>
+          <button>:|</button>
+          <button>:o</button>
+        </div>
+        <p class="descricao">Descrição que vou fazer depois</p>
+      </div>
+    </div>
+
+    <div class="caixa-produto">
+      <img src="#" alt="BIS">
+      <div class="info">
+        <h2>BIS Chocolate Lacta</h2>
+        <p>Quantidade: 237</p>
+        <div class="botoes">
+          <button>:D</button>
+          <button>:|</button>
+          <button>:o</button>
+        </div>
+        <p class="descricao">Descrição que vou fazer depois</p>
+      </div>
+    </div>
+
+    <div class="caixa-produto">
+      <img src="#" alt="7Belo">
+      <div class="info">
+        <h2>Pacote 500g 7Belo</h2>
+        <p>Quantidade: 604</p>
+        <div class="botoes">
+          <button>:D</button>
+          <button>:|</button>
+          <button>:o</button>
+        </div>
+        <p class="descricao">Descrição que vou fazer depois</p>
+      </div>
+    </div>
+
+  </div>
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f8f8f8;
+  color: #222;
+}
+
+/* Cabeçalho */
+.cabecalho {
+  background: url('imagemFundo.png') no-repeat center center/cover;
+  filter: brightness(1.0);
+  height: 500px;
+  padding: 20px;
+  color: #fff;
+ 
+}
+
+.cabecalho::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6); 
+  z-index: -1; 
+}
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.logo {
+  width: 50px;
+}
+
+.texto-cabecalho h1 {
+  margin-top: 100px;
+  font-size: 3.5rem;
+  margin-left: 150px
+}
+
+.texto-cabecalho span {
+  color: #00bfff;
+}
+
+/* Resumo */
+.resumo {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin: 20px;
+}
+
+.caixa-resumo {
+  background: #444444;
+  color: white;
+  padding: 40px;
+  border-radius: 10px;
+  font-weight: bold;
+  width: 350px;
+  height: 120px;
+  margin-top: -80px;
+  z-index: 1;
+  font-size: 27px;
+  text-align: center;
+}
+
+/* Pesquisa */
+.pesquisa {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.pesquisa input {
+  width: 80%;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Produtos */
+.produtos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.caixa-produto {
+  display: flex;
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.caixa-produto img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-right: 20px;
+}
+
+.info h2 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.botoes {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.botoes button {
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.descricao {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+</style>
+</body>
+</html>
