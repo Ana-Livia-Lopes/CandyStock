@@ -59,7 +59,7 @@ body {
 }
 
 .texto-cabecalho span {
-  color: #00bfff;
+  color: #DCB536;
 }
 
 /* Resumo */
@@ -68,6 +68,9 @@ body {
   justify-content: center;
   gap: 60px;
   margin: 20px;
+}
+.iconresumo{
+    font-size: 40px;
 }
 
 .caixa-resumo {
@@ -92,7 +95,7 @@ body {
 }
 
 .pesquisa input {
-  width: 80%;
+  width: 79%;
   padding: 15px;
   border-radius: 10px;
   border: 1px solid #ccc;
@@ -136,15 +139,75 @@ body {
   margin: 10px 0;
 }
 
-.botoes button {
+i {
   border: none;
-  padding: 8px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .descricao {
   font-size: 0.9rem;
   color: #555;
+}
+/* footer */
+footer {
+    margin-top: 80px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+    background-color: #D09900;
+    width: 100%;
+    color: rgb(255, 255, 255);
+}
+
+#footer {
+    justify-content: space-evenly;
+    display: flex;
+    padding: 20px;
+}
+
+footer h2 {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .cabecalho {
+    height: 300px;
+    text-align: center;
+  }
+
+  .texto-cabecalho h1 {
+    font-size: 2rem;
+    margin-top: 70px;
+    margin-left: 0;
+  }
+
+  .resumo {
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+  }
+
+  .caixa-resumo {
+    width: 80%;
+    margin-top: 0px;
+    font-size: 20px;
+    height: 85px;
+    padding: 25px;
+  }
+
+  .produtos {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .caixa-produto {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 78%;
+  }
+
+    
 }
