@@ -26,7 +26,7 @@
       </ul>
     </div>
     <div class="texto-cabecalho">
-      <h1>Seu estoque <span>organizado</span>, <br>seu negócio ainda mais <b>doce.</b>
+      <h1>Seu estoque <span>organizado</span>, <br>seu negócio ainda mais <b>doce</b>
     </div>
   </div>
 
@@ -50,8 +50,8 @@
 
   <!-- Produtos -->
   <div class="produtos">
-    <div id="botao-add">
-      <a href="#">Adicionar produto</a>
+    <div class="button">
+      Adicionar produto
     </div>
     <div class="caixa-produto">
       <div id="caixa-img">
@@ -197,10 +197,42 @@
       </div>
     </div>
   </div>
-  <style>
 
+  <section>
+    <div class='swal2-input-container'>
+      <div class="pt1">
 
-  </style>
+        <label for="swal-input1">Nome do produto</label>
+        <input type='text' id='swal-input1' class='swal2-input' placeholder='Bala FINI Beijos'>
+        <div id="div-pq">
+          <div>
+            <label for="swal-input1">Preço</label>
+            <input type='text' id='swal-input1' class="pq" placeholder='100,00'>
+          </div>
+          <div id="qnt">
+            <label for="swal-input1">Quantidade</label>
+            <input type='number' id='swal-input1' class='swal2-input' placeholder='200'>
+          </div>
+        </div>
+
+        <label for="swal-input1">Imagem do produto</label>
+        <input type='file' id='swal-input1' class='swal2-input' placeholder='Bala FINI Beijos'>
+      </div>
+
+      <div class="pt2">
+        <div id="desc">
+          <label for="swal-input1">Descrição</label>
+          <input type='text' id='swal-input1' class='swal2-input' placeholder='Descreva detalhes sobre o produto'>
+        </div>
+
+        <label for="swal-input1">Status</label>
+        <select name="" id="">
+          <option value="">Ativo</option>
+          <option value="">Inativo</option>
+        </select>
+      </div>
+    </div>
+  </section>
   <footer>
     <div id="footer">
 
@@ -228,6 +260,54 @@
 
     </div>
   </footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    $('.button').click(function () {
+      Swal.fire({
+        title: 'Adicione um novo produto',
+        confirmButtonText: 'Salvar produto',
+        width: '950px',
+        html: `<div class='swal2-input-container'>
+          <div class= "pt1">
+
+        <label for="swal-input1">Nome do produto</label>
+        <input type='text' id='swal-input1' class='swal2-input' placeholder='Bala FINI Beijos'>
+        <div id="div-pq">
+          <div>
+            <label for="swal-input1">Preço</label>
+            <input type='text' id='swal-input1' class="pq" placeholder='100,00'>
+          </div>
+          <div id="qnt">
+            <label for="swal-input1" >Quantidade</label>
+            <input type='number' id='swal-input1' class='swal2-input' placeholder='200'>
+          </div>
+        </div>
+
+        <label for="swal-input1">Imagem do produto</label>
+        <input type='file' id='swal-input1' class='swal2-input' placeholder='Bala FINI Beijos'>
+      </div>
+
+      <div class="pt2">
+        <div id="desc">
+          <label for="swal-input1">Descrição</label>
+          <input type='text' id='swal-input1' class='swal2-input' placeholder='Descreva detalhes sobre o produto'>
+        </div>
+
+        <label for="swal-input1">Status</label>
+        <select name="" id="">
+          <option value="">Ativo</option>
+          <option value="">Inativo</option>
+        </select>
+      </div>
+    </div>`,
+        confirmButtonColor: '#864B93',
+        cancelButtonText: 'Cancelar',
+        showCancelButton: true,
+      })
+    });
+  </script>
+
 </body>
 
 </html>
