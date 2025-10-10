@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Rethink Sans", sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-color: rgb(244, 244, 244);
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: rgb(49, 49, 49);
+    font-weight: bold;
+}
+
+.logo {
+    width: 50px;
+}
+
+.box-graficoArea {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    max-height: 500px;
+}
+
+.box-graficoArea h2 {
+    margin-bottom: 20px;
+    color: rgb(65, 65, 65);
+}
