@@ -28,7 +28,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.74);
+    background: rgba(0, 0, 0, 0.842);
     z-index: -1;
   }
 
@@ -56,7 +56,7 @@
 
   .texto-cabecalho h1 {
     margin-top: 100px;
-    font-size: 3.5rem;
+    font-size: 3.8rem;
     margin-left: 150px;
 
   }
@@ -67,6 +67,11 @@
 
   .texto-cabecalho b {
     font-weight: 700;
+    background-image: url(./img/images.jfif);
+    background-repeat: repeat;
+    background-size: 100%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   /* Resumo */
@@ -82,7 +87,7 @@
   }
 
   .caixa-resumo {
-    background: #343434ed;
+    background: #ED4E81;
     color: white;
     padding: 40px;
     border-radius: 10px;
@@ -283,12 +288,49 @@
      
     }
 
+    /* comentarios  */
+  .swal2-comt-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    gap: 10px;
+    text-align: left;
+  }
+
+  .swal2-comt-container .cima-comt{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .swal2-comt-container .cima-comt p{
+    color: #706f6f;
+    font-size: 12px;
+  }
+
+  .swal2-comt-container .cima-comt h5{
+    font-size: 15px;
+  }
+
+  .swal2-comt-container input{
+    padding: 16px;
+    border: 1px solid #A979B4;
+    border-radius: 15px;
+    width: 100%;
+  }
+
+  .swal2-comt-container input::placeholder{
+    font-size: 16px;
+  }
+
+
   /* footer */
   footer {
     margin-top: 80px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100%;
-    background-color: #D09900;
+    background-color: #ED4E81;
     width: 100%;
     color: rgb(255, 255, 255);
   }
@@ -342,5 +384,7 @@
       width: 78%;
     }
 
-
+.info{
+  width: 300px;
+}
   }

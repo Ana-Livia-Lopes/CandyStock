@@ -19,10 +19,10 @@
     <div class="menu">
       <img src="./img/logo-candy-senfundo.png" alt="logo" class="logo">
       <ul>
-        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Produtos</a></li>
         <li><a href="#">Relatórios</a></li>
         <li><a href="#">Perfil</a></li>
-        <li><a href="#">Entrar</a></li>
+        <li><a href="#">Sair</a></li>
       </ul>
     </div>
     <div class="texto-cabecalho">
@@ -62,7 +62,7 @@
           <div>
             <h2>Trufa da Chocolate</h2>
           </div>
-          <div>
+          <div class="comentarios">
             <i class="fa-solid fa-comments"></i>
           </div>
         </div>
@@ -91,7 +91,7 @@
           <div>
             <h2>Pacote FINI Dentaduras</h2>
           </div>
-          <div>
+          <div class="comentarios">
             <i class="fa-solid fa-comments"></i>
           </div>
         </div>
@@ -120,7 +120,7 @@
           <div>
             <h2>BIS Chocolate Lacta</h2>
           </div>
-          <div>
+          <div class="comentarios">
             <i class="fa-solid fa-comments"></i>
           </div>
         </div>
@@ -149,7 +149,7 @@
           <div>
             <h2>Pacote Bala 7Belo</h2>
           </div>
-          <div>
+          <div class="comentarios">
             <i class="fa-solid fa-comments"></i>
           </div>
         </div>
@@ -178,7 +178,7 @@
           <div>
             <h2>Pacote Ouro Branco</h2>
           </div>
-          <div>
+          <div class="comentarios">
             <i class="fa-solid fa-comments"></i>
           </div>
         </div>
@@ -198,41 +198,6 @@
     </div>
   </div>
 
-  <section>
-    <div class='swal2-input-container'>
-      <div class="pt1">
-
-        <label for="swal-input1">Nome do produto</label>
-        <input type='text' id='swal-input1' class='swal2-input' placeholder='Bala FINI Beijos'>
-        <div id="div-pq">
-          <div>
-            <label for="swal-input1">Preço</label>
-            <input type='text' id='swal-input1' class="pq" placeholder='100,00'>
-          </div>
-          <div id="qnt">
-            <label for="swal-input1">Quantidade</label>
-            <input type='number' id='swal-input1' class='swal2-input' placeholder='200'>
-          </div>
-        </div>
-
-        <label for="swal-input1">Imagem do produto</label>
-        <input type='file' id='swal-input1' class='swal2-input' placeholder='Bala FINI Beijos'>
-      </div>
-
-      <div class="pt2">
-        <div id="desc">
-          <label for="swal-input1">Descrição</label>
-          <input type='text' id='swal-input1' class='swal2-input' placeholder='Descreva detalhes sobre o produto'>
-        </div>
-
-        <label for="swal-input1">Status</label>
-        <select name="" id="">
-          <option value="">Ativo</option>
-          <option value="">Inativo</option>
-        </select>
-      </div>
-    </div>
-  </section>
   <footer>
     <div id="footer">
 
@@ -304,6 +269,47 @@
         confirmButtonColor: '#864B93',
         cancelButtonText: 'Cancelar',
         showCancelButton: true,
+      })
+    });
+
+
+
+
+    $('.comentarios').click(function () {
+      Swal.fire({
+        title: 'Comentários',
+        confirmButtonText: 'Comentar',
+        width: '950px',
+        html: `<div class='swal2-comt-container'>
+      <div>
+        <div class="cima-comt">
+          <h5>evelynmontes18</h5>
+          <p>2h</p>
+        </div>
+        <p>Esse bombom é o melhor, compensa muito comprar o pacote</p>
+      </div>
+      <hr>
+      <div>
+        <div class="cima-comt">
+          <h5>rogeriofranca</h5>
+          <p>1d</p>
+        </div>
+        <p>Comprei 4 pacotes desse pro aniversário da minha filha.</p>
+      </div>
+      <hr>
+      <div>
+        <div class="cima-comt">
+          <h5>julianasouza01</h5>
+          <p>2d</p>
+        </div>
+        <p>Melhor preço que tem é nessa loja</p>
+      </div>
+      <div>
+          <input type='text' id='swal-input1' class='swal2-input-3' placeholder='Adicione um comentário'>
+      </div>
+    </div>`,
+        confirmButtonColor: '#864B93',
+        showCancelButton: false,
       })
     });
   </script>
