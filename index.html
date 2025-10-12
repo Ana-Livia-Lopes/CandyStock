@@ -72,7 +72,6 @@
           <p>Preço: R$ 5,90</p>
         </div>
         <div class="botoes">
-          <i class="fa-solid fa-square-plus"></i>
           <i class="fa-solid fa-square-xmark"></i>
           <i class="fa-solid fa-square-pen"></i>
         </div>
@@ -101,7 +100,6 @@
           <p>Preço: R$ 6,90</p>
         </div>
         <div class="botoes">
-          <i class="fa-solid fa-square-plus"></i>
           <i class="fa-solid fa-square-xmark"></i>
           <i class="fa-solid fa-square-pen"></i>
         </div>
@@ -130,7 +128,7 @@
           <p>Preço: R$ 8,99</p>
         </div>
         <div class="botoes">
-          <i class="fa-solid fa-square-plus"></i>
+
           <i class="fa-solid fa-square-xmark"></i>
           <i class="fa-solid fa-square-pen"></i>
         </div>
@@ -159,7 +157,6 @@
           <p>Preço: R$ 11,90</p>
         </div>
         <div class="botoes">
-          <i class="fa-solid fa-square-plus"></i>
           <i class="fa-solid fa-square-xmark"></i>
           <i class="fa-solid fa-square-pen"></i>
         </div>
@@ -188,7 +185,6 @@
           <p>Preço: R$ 50,99</p>
         </div>
         <div class="botoes">
-          <i class="fa-solid fa-square-plus"></i>
           <i class="fa-solid fa-square-xmark"></i>
           <i class="fa-solid fa-square-pen"></i>
         </div>
@@ -312,6 +308,85 @@
         showCancelButton: false,
       })
     });
+
+
+    $('.fa-square-xmark').click(function () {
+      Swal.fire({
+        title: "Tem certeza que deseja excluir?",
+        text: "essa ação não podera ser revertida",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sim, excluir",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Excluido!",
+            text: "o produto foi excluido de estoque.",
+            icon: "success"
+          });
+        }
+      });
+    });
+
+
+
+    // lin, vc pode regatar os valores anteriores do produto no placeholder aqui de edição pfv?
+    $('.fa-square-pen').click(function () {
+      Swal.fire({
+        title: 'Editar produto',
+        confirmButtonText: 'Salvar produto',
+        width: '950px',
+        html: `<div class='swal2-input-container'>
+          <div class= "pt1">
+
+        <label for="swal-input1">Nome do produto</label>
+        <input type='text' id='swal-input1' class='swal2-input' placeholder='Bala FINI Beijos'>
+        <div id="div-pq">
+          <div>
+            <label for="swal-input1">Preço</label>
+            <input type='text' id='swal-input1' class="pq" placeholder='100,00'>
+          </div>
+          <div id="qnt">
+            <label for="swal-input1" >Quantidade</label>
+            <input type='number' id='swal-input1' class='swal2-input' placeholder='200'>
+          </div>
+        </div>
+
+        <label for="swal-input1">Imagem do produto</label>
+        <input type='file' id='swal-input1' class='swal2-input' placeholder='Bala FINI Beijos'>
+      </div>
+
+      <div class="pt2">
+        <div id="desc">
+          <label for="swal-input1">Descrição</label>
+          <input type='text' id='swal-input1' class='swal2-input' placeholder='Descreva detalhes sobre o produto'>
+        </div>
+
+        <label for="swal-input1">Status</label>
+        <select name="" id="">
+          <option value="">Ativo</option>
+          <option value="">Inativo</option>
+        </select>
+      </div>
+    </div>`,
+        confirmButtonColor: '#864B93',
+        cancelButtonText: 'Cancelar',
+        showCancelButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Editado!",
+            text: "o produto foi editado no estoque.",
+            icon: "success"
+          });
+        }
+      });
+    });
+
+
   </script>
 
 </body>
