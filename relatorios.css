@@ -212,22 +212,21 @@ h2 {
     padding-bottom: 5px;
 }
 
-/* footer */
-  footer {
+footer {
+    margin-top: 80px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100%;
-    max-height: 165px;
-    background-color: #D09900;
+    background-color: #ED4E81;
     width: 100%;
     color: rgb(255, 255, 255);
-  }
+}
 
-  #footer {
+#footer {
     justify-content: space-evenly;
     display: flex;
     padding: 20px;
-  }
+}
 
-  footer h2 {
+footer h2 {
     margin-bottom: 10px;
-  }
+}
