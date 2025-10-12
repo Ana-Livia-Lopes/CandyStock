@@ -7,7 +7,7 @@
 
 body {
     height: 100vh;
-    background-color: rgb(244, 244, 244);
+    background-color: rgb(238, 238, 238);
 }
 
 .menu {
@@ -17,6 +17,18 @@ body {
     padding: 3px 20px;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu div p {
+    font-weight: 800;
+    color: rgb(71, 71, 71);
+    font-size: 20px;
 }
 
 .menu ul {
@@ -31,21 +43,191 @@ body {
     font-weight: bold;
 }
 
+li {
+    display: flex;
+    align-items: center;
+}
+
+li a button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6B3F82;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
 .logo {
     width: 50px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-cima {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
 }
 
 .box-graficoArea {
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 1200px;
-    max-height: 500px;
+    padding: 15px;
+    max-width: 900px;
 }
 
-.box-graficoArea h2 {
+h2 {
     margin-bottom: 20px;
     color: rgb(65, 65, 65);
 }
+
+#graficoArea {
+    width: 100% !important;
+    height: 350px !important;
+}
+
+.dados {
+    padding: 15px;
+    height: 430px;
+    width: 320px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dados div {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    color: rgb(80, 80, 80);
+}
+
+.dados div p {
+    font-size: 17px;
+}
+
+.dados div button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6B3F82;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+    align-self: center;
+}
+
+.dados hr {
+    margin-top: 15px;
+    border: 1px solid rgb(214, 214, 214);
+    border-radius: 20px;
+}
+
+.container-baixo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.box-graficoPizza {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    max-width: 400px;
+}
+
+#graficoPizza {
+    width: 100% !important;
+    height: 300px !important;
+}
+
+.box-graficoColuna {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 720px;
+}
+
+#graficoColuna {
+    width: 100% !important;
+    height: 325px !important;
+}
+
+#rank-entrada {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 1070px;
+    max-height: 500px;
+    overflow-y: auto;
+    margin-bottom: 40px;
+}
+
+#rank-entrada ul {
+    list-style: none;
+    margin-top: 10px;
+    padding: 0;
+}
+
+#rank-entrada li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(240, 240, 240);
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: rgb(60, 60, 60);
+}
+
+#rank-entrada li span {
+    font-weight: bold;
+    color: #F16B97;
+}
+
+.label-ranking {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    color: #F16B97;
+    border-bottom: 2px solid rgb(226, 226, 226);
+    padding-bottom: 5px;
+}
+
+/* footer */
+  footer {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+    max-height: 165px;
+    background-color: #D09900;
+    width: 100%;
+    color: rgb(255, 255, 255);
+  }
+
+  #footer {
+    justify-content: space-evenly;
+    display: flex;
+    padding: 20px;
+  }
+
+  footer h2 {
+    margin-bottom: 10px;
+  }
