@@ -213,9 +213,9 @@ h2 {
 }
 
 footer {
-    margin-top: 80px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100%;
+    max-height: 165px;
     background-color: #ED4E81;
     width: 100%;
     color: rgb(255, 255, 255);
