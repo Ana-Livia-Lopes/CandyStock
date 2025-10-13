@@ -27,6 +27,21 @@ body {
     right: -420px;
 }
 
+.btn-voltar {
+    position: absolute;
+    top: 670px;
+    left: 760px;
+    font-size: 30px;
+    color: #F16B97;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-voltar:hover {
+    color: #ff69b4;
+    transform: scale(1.1);
+}
+
 .container {
     text-align: center;
     background: transparent;
@@ -127,4 +142,166 @@ input:focus {
 
 a {
     text-decoration: none;
+}
+
+@media (max-width: 1024px) {
+    body {
+        height: auto;
+        overflow-y: auto;
+        padding-top: 80px; 
+        padding-bottom: 80px;
+    }
+
+    .borda {
+        width: 800px;
+        opacity: 1;
+    }
+
+    .borda-esquerda {
+        top: -200px;
+        left: -300px;
+    }
+
+    .borda-direita {
+        bottom: -200px;
+        right: -300px;
+    }
+
+    .container {
+        max-width: 90%;
+        margin-top: 0;
+        padding: 20px;
+    }
+
+    .logo img {
+        width: 120px;
+    }
+
+    .logo h1 {
+        font-size: 36px;
+    }
+
+    label,
+    input,
+    .opcoes {
+        width: 90%;
+        max-width: 450px;
+    }
+
+    input {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .btn-entrar {
+        width: 160px;
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px; 
+        padding-bottom: 60px;
+    }
+
+    .borda {
+        width: 600px;
+        opacity: 1;
+    }
+
+    .borda-esquerda {
+        top: -150px;
+        left: -250px;
+    }
+
+    .borda-direita {
+        bottom: -150px;
+        right: -250px;
+    }
+
+    .container {
+        max-width: 95%;
+        padding: 15px;
+    }
+
+    .logo img {
+        width: 100px;
+    }
+
+    .logo h1 {
+        font-size: 30px;
+    }
+
+    label,
+    input,
+    .opcoes {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    input {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .opcoes {
+        text-align: center;
+    }
+
+    .btn-entrar {
+        width: 140px;
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .cadastro {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 130px; 
+        padding-bottom: 40px;
+    }
+
+    .borda {
+        width: 400px;
+        opacity: 1;
+    }
+
+    .borda-esquerda {
+        top: -100px;
+        left: -180px;
+    }
+
+    .borda-direita {
+        bottom: -100px;
+        right: -180px;
+    }
+
+    .logo img {
+        width: 80px;
+    }
+
+    .logo h1 {
+        font-size: 24px;
+    }
+
+    label,
+    input,
+    .opcoes {
+        max-width: 250px;
+    }
+
+    .btn-entrar {
+        width: 120px;
+        font-size: 14px;
+    }
+
+    .cadastro {
+        font-size: 13px;
+    }
 }
