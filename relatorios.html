@@ -21,6 +21,7 @@
             <img src="./img/logo-candy-senfundo.png" alt="logo" class="logo">
             <p>Relatórios</p>
         </div>
+        <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
         <ul>
             <li><a href="index.html">Inicio</a></li>
             <li><a href="relatorios.html">Relatórios</a></li>
@@ -80,34 +81,35 @@
     </main>
 
     <footer>
-        <div id="footer">
+        <div class="contato">
+            <h2>Informações de Contato</h2>
+            <p><strong>Candy Stock:</strong></p>
+            <p>Endereço: Av. alguma, 90, Caçapava - SP, 12084-090</p>
+            <p>Telefone: (12) 9953-1976</p>
+            <p>E-mail: candystock@gmail.com</p>
 
-            <div class="contato">
-                <h2>Informações de Contato</h2>
-                <p><strong>Candy Stock:</strong></p>
-                <p>Endereço: Av. alguma, 90, Caçapava - SP, 12084-090</p>
-                <p>Telefone: (12) 9953-1976</p>
-                <p>E-mail: candystock@gmail.com</p>
+        </div>
 
-            </div>
+        <div class="equipe">
+            <h2>Equipe Desenvolvedora</h2>
+            <ul>
+                <p>Ana Lívia dos Santos Lopes</p>
 
-            <div class="equipe">
-                <h2>Equipe Desenvolvedora</h2>
-                <ul>
-                    <p>Ana Lívia dos Santos Lopes</p>
+                <p>Gabriel Reis de Brito</p>
 
-                    <p>Gabriel Reis de Brito</p>
+                <p>Isadora Gomes da Silva</p>
 
-                    <p>Isadora Gomes da Silva</p>
-
-                    <p>Lucas Randal Abreu Balderrama</p>
-                </ul>
-            </div>
-
+                <p>Lucas Randal Abreu Balderrama</p>
+            </ul>
         </div>
     </footer>
 
     <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu ul');
+            menu.classList.toggle('active');
+        }
+
         const ctx = document.getElementById('graficoArea');
 
         new Chart(ctx, {

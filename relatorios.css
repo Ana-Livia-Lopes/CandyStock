@@ -63,6 +63,13 @@ li a button {
     width: 50px;
 }
 
+.menu i {
+    display: none;
+    font-size: 24px;
+    color: rgb(80, 80, 80);
+    cursor: pointer;
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -219,9 +226,6 @@ footer {
     background-color: #ED4E81;
     width: 100%;
     color: rgb(255, 255, 255);
-}
-
-#footer {
     justify-content: space-evenly;
     display: flex;
     padding: 20px;
@@ -229,4 +233,142 @@ footer {
 
 footer h2 {
     margin-bottom: 10px;
+}
+
+@media (max-width: 767px) {
+    body {
+        background-color: rgb(245, 245, 245);
+    }
+
+    .menu div p {
+        font-size: 20px;
+    }
+
+    .menu ul {
+        display: none;
+    }
+
+    .menu ul.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        padding: 15px 20px;
+        z-index: 1000;
+        border-radius: 0 0 12px 12px;
+        animation: slideDown 0.25s ease;
+    }
+
+    .menu ul.active li {
+        width: 100%;
+        text-align: left;
+        padding: 10px 5px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        transition: background-color 0.2s ease;
+    }
+
+    .menu ul.active li:last-child {
+        border-bottom: none;
+    }
+
+    .menu ul.active li:hover {
+        background-color: rgba(107, 63, 130, 0.1);
+        border-radius: 8px;
+    }
+
+    .menu ul.active li a button {
+        width: 100%;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+
+    .menu i {
+        display: block;
+    }
+
+    .container-cima {
+        flex-direction: column;
+        padding: 10px;
+        gap: 15px;
+    }
+
+    #graficoArea {
+        height: 200px !important;
+    }
+
+    .box-graficoArea,
+    .dados {
+        width: 100%;
+        max-width: 95%;
+    }
+
+    .dados {
+        height: auto;
+    }
+
+    .container-baixo {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .box-graficoPizza,
+    .box-graficoColuna {
+        width: 100%;
+        max-width: 90%;
+    }
+
+    #graficoPizza {
+        height: 250px !important;
+        width: 250px !important;
+        justify-self: center;
+    }
+
+    #graficoColuna {
+        height: 200px !important;
+    }
+
+    #rank-entrada {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .label-ranking span {
+        font-size: 14px;
+    }
+
+    #rank-entrada li {
+        font-size: 14px;
+        flex-direction: row;
+    }
+
+    footer {
+        padding: 20px;
+        font-size: 14px;
+        text-align: center;
+        height: 100%;
+        max-height: max-content;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contato,
+    .equipe {
+        width: 100%;
+    }
 }
