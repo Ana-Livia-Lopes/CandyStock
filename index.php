@@ -41,7 +41,13 @@ foreach ($produtos as $produto) {
   <div class="cabecalho">
     <div class="menu">
       <img src="./img/logo-candy-senfundo.png" alt="logo" class="logo">
-      <ul>
+  <div class="hamburguer" id="hamburguer">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+      <ul id="nav-links">
         <li><a href="index.php">Produtos</a></li>
         <li><a href="relatorios.php">Relatórios</a></li>
         <li><a href="perfil.php">Perfil</a></li>
@@ -268,7 +274,7 @@ foreach ($produtos as $produto) {
       <div class="contato">
         <h2>Informações de Contato</h2>
         <p><strong>Candy Stock:</strong></p>
-        <p>Endereço: Av. alguma, 90, Caçapava - SP, 12084-090</p>
+        <p>Endereço: Av. Brasil, 90, Caçapava - SP, 12084-090</p>
         <p>Telefone: (12) 9953-1976</p>
         <p>E-mail: candystock@gmail.com</p>
 
@@ -1009,6 +1015,15 @@ foreach ($produtos as $produto) {
 
 
   </script>
+<script>
+  const hamburguer = document.getElementById('hamburguer');
+  const navLinks = document.getElementById('nav-links');
+
+  hamburguer.addEventListener('click', () => {
+    hamburguer.classList.toggle('ativo');
+    navLinks.classList.toggle('show');
+  });
+</script>
 
 </body>
 
