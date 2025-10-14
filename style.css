@@ -353,6 +353,17 @@
     margin-bottom: 10px;
   }
 
+  footer ul {
+    list-style: none;
+    line-height: 2;
+  }
+
+  .equipe ul a{
+    text-decoration: none;
+    color: white;
+    line-height: 20px;
+  }
+
   @media (max-width: 768px) {
     .cabecalho {
       height: 300px;
