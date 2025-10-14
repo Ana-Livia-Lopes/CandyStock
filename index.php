@@ -113,10 +113,10 @@ foreach ($produtos as $produto) {
           <p>Preço: R$ ' . $produto->getPreco() . '</p>
         </div>
         <div class="botoes">
-          <i class="fa-solid fa-square-xmark"></i>
-          <i class="fa-solid fa-square-pen"></i>
-          <i class="fa-solid fa-square-plus"></i>
-          <i class="fa-solid fa-square-minus"></i>
+          <i class="fa-solid fa-square-xmark" id-produto=' . $produto->id . '></i>
+          <i class="fa-solid fa-square-pen" id-produto=' . $produto->id . '></i>
+          <i class="fa-solid fa-square-plus" id-produto=' . $produto->id . '></i>
+          <i class="fa-solid fa-square-minus" id-produto=' . $produto->id . '></i>
         </div>
         <p class="descricao">'. $produto->getDescricao() .'</p>
       </div>
@@ -374,48 +374,95 @@ foreach ($produtos as $produto) {
     });
 
 
+    function formatarDataHora(data) {
+      const dia = String(data.getDate()).padStart(2, '0');
+      const mes = String(data.getMonth() + 1).padStart(2, '0'); // Os meses são baseados em zero
+      const ano = data.getFullYear();
+      const horas = String(data.getHours()).padStart(2, '0');
+      const minutos = String(data.getMinutes()).padStart(2, '0');
+      const segundos = String(data.getSeconds()).padStart(2, '0');
 
+      return `${dia}/${mes}/${ano} ${horas}:${minutos}:${segundos}`;
+    }
 
-    $('.comentarios').click(function () {
+    $('.comentarios').click(async function () {
+      const id = this.getAttribute("id-produto");
+      const comentarios = await (await fetch("./get_comentarios.php?id=" + id)).json();
+      const htmlComentarios = [];
+      for (const comentario of comentarios.data) {
+        const data = new Date(comentario.data_hora);
+        htmlComentarios.push(`
+      <div>
+        <div class="cima-comt">
+          <h5>${comentario.usuario.nome}</h5>
+          <p>${formatarDataHora(data)}</p>
+        </div>
+        <p>${comentario.conteudo}</p>
+      </div>`);
+      }
       Swal.fire({
         title: 'Comentários',
         confirmButtonText: 'Comentar',
         width: '950px',
         html: `<div class='swal2-comt-container'>
-      <div>
-        <div class="cima-comt">
-          <h5>evelynmontes18</h5>
-          <p>2h</p>
-        </div>
-        <p>Esse bombom é o melhor, compensa muito comprar o pacote</p>
-      </div>
-      <hr>
-      <div>
-        <div class="cima-comt">
-          <h5>rogeriofranca</h5>
-          <p>1d</p>
-        </div>
-        <p>Comprei 4 pacotes desse pro aniversário da minha filha.</p>
-      </div>
-      <hr>
-      <div>
-        <div class="cima-comt">
-          <h5>julianasouza01</h5>
-          <p>2d</p>
-        </div>
-        <p>Melhor preço que tem é nessa loja</p>
-      </div>
+      ${htmlComentarios.join("<br>")}
       <div>
           <input type='text' id='swal-input1' class='swal2-input-3' placeholder='Adicione um comentário'>
       </div>
     </div>`,
         confirmButtonColor: '#864B93',
         showCancelButton: false,
+        preConfirm: async () => {
+          const conteudo = document.getElementById('swal-input1').value;
+          if (!conteudo) {
+            Swal.showValidationMessage('O comentário não pode ser vazio.');
+            return false;
+          }
+
+          try {
+            const formData = new FormData();
+            formData.append('id_produto', id);
+            formData.append('conteudo', conteudo);
+
+            const response = await fetch("./adicionar_comentario.php", {
+              method: "POST",
+              body: formData
+            });
+
+            const data = await response.json();
+
+            if (data.status === "success") {
+              Swal.fire({
+                icon: 'success',
+                title: 'Sucesso ao adicionar comentário',
+                text: data.message
+              }).then(() => {
+                location.reload();
+              });
+            } else {
+              Swal.fire({
+                icon: 'error',
+                title: 'Erro ao adicionar comentário',
+                text: data.message
+              });
+            }
+          } catch (error) {
+            console.log(error)
+            Swal.fire({
+              icon: 'error',
+              title: 'Erro ao adicionar comentário',
+              text: 'Ocorreu um erro local ao tentar adicionar o comentário.'
+            });
+          }
+
+          return true;
+        }
       })
     });
 
 
     $('.fa-square-xmark').click(function () {
+      const id = this.getAttribute("id-produto");
       Swal.fire({
         title: "Tem certeza que deseja excluir?",
         text: "essa ação não podera ser revertida",
@@ -439,6 +486,7 @@ foreach ($produtos as $produto) {
 
 
     $('.fa-square-pen').click(function () {
+      const id = this.getAttribute("id-produto");
       Swal.fire({
         title: 'Editar produto',
         confirmButtonText: 'Salvar produto',
@@ -490,6 +538,7 @@ foreach ($produtos as $produto) {
 
 
      $('.fa-square-plus').click(function () {
+      const id = this.getAttribute("id-produto");
       Swal.fire({
         title: 'Adicionar quantidade de produto',
         confirmButtonText: 'Salvar produto',
@@ -498,7 +547,7 @@ foreach ($produtos as $produto) {
 
        <div id="quantidade">
             <label for="swal-input1" >Quantidade</label> <br>
-            <input type='number' id='input-produto-estoque' class='swal2-input' placeholder='200' value='0'>
+            <input type='number' id='input-produto-estoque' class='swal2-input' placeholder='200' value='0' min='0'>
           </div>
     </div>`,
         confirmButtonColor: '#864B93',
@@ -518,6 +567,7 @@ foreach ($produtos as $produto) {
 
 
          $('.fa-square-minus').click(function () {
+      const id = this.getAttribute("id-produto");
       Swal.fire({
         title: 'Remover quantidade de produto',
         confirmButtonText: 'Salvar produto',
@@ -526,7 +576,7 @@ foreach ($produtos as $produto) {
 
        <div id="quantidade">
             <label for="swal-input1" >Quantidade</label> <br>
-            <input type='number' id='input-produto-estoque' class='swal2-input' placeholder='200' value='0'>
+            <input type='number' id='input-produto-estoque' class='swal2-input' placeholder='200' value='0' min='0'>
           </div>
     </div>`,
         confirmButtonColor: '#864B93',

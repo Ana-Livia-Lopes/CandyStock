@@ -486,6 +486,47 @@ class Produto {
             (bool)$tupla['ativo']
         );
     }
+
+    public static function adicionarComentario(int $id_produto, string $conteudo): Resultado {
+        if (!Usuario::hasSessao()) {
+            return new Resultado(false, "Usuário não autenticado");
+        }
+
+        $conteudo = trim($conteudo);
+        if (empty($conteudo)) {
+            return new Resultado(false, "Conteúdo do comentário não pode estar vazio");
+        }
+
+        if ($id_produto <= 0) {
+            return new Resultado(false, "ID do produto inválido");
+        }
+
+        // Verificar se o produto existe
+        $produto = self::byId($id_produto);
+        if ($produto === null) {
+            return new Resultado(false, "Produto não encontrado");
+        }
+
+        $usuario = Usuario::getSessao();
+
+        // Inserir comentário no banco de dados
+        global $conn;
+        $sql = "INSERT INTO comentarios (id_usuario, id_produto, conteudo) VALUES (?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt === false) {
+            return new Resultado(false, "Erro na preparação da consulta");
+        }
+
+        $id_usuario = $usuario->id;
+        $stmt->bind_param("iis", $id_usuario, $id_produto, $conteudo);
+
+        if (!$stmt->execute()) {
+            return new Resultado(false, "Erro ao adicionar comentário");
+        }
+
+        return new Resultado(true, "Comentário adicionado com sucesso");
+    }
 }
 
 class ResultadoProduto {
