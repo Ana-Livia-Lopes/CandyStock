@@ -12,7 +12,7 @@
 
   /* Cabeçalho */
   .cabecalho {
-    background: url('img/imagemFundo.png') no-repeat center center/cover;
+    background: url('../img/imagemFundo.png') no-repeat center center/cover;
     filter: brightness(1.0);
     height: 80vh;
     color: #fff;
@@ -97,7 +97,7 @@
 
   .texto-cabecalho b {
     font-weight: 700;
-    background-image: url(./img/images.jfif);
+    background-image: url(../img/images.jfif);
     background-repeat: repeat;
     background-size: 100%;
     background-clip: text;

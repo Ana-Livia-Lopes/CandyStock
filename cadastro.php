@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Cadastro</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="./css/login.css">
 </head>
 
 <body>
