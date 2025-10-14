@@ -276,14 +276,14 @@ foreach ($produtos as $produto) {
 
       <div class="equipe">
         <h2>Equipe Desenvolvedora</h2>
-        <ul>
-          <p>Ana Lívia dos Santos Lopes</p>
-          <p>Gabriel Reis de Brito</p>
-          <p>Isadora Gomes da Silva</p>
-          <p>Lucas Randal Abreu Balderrama</p>
-          <p>Guilherme Ricardo de Paiva</p>
-          <p>Flávia Glenda Guimarães Carvalho</p>
-        </ul>
+         <ul>
+                    <a href="https://linktr.ee/analivialopess" target="_blank" class="conteudo-site"><li>Ana Lívia dos Santos Lopes</li></a>
+                    <a href="https://www.linkedin.com/in/fl%C3%A1via-glenda-1992a72b6/" target="_blank" class="conteudo-site"><li>Flávia Glenda Guimarães Carvalho</li></a>
+                    <a href="https://linktr.ee/gabrielreiss" target="_blank" class="conteudo-site"><li>Gabriel Reis de Brito</li></a>
+                    <a href="https://linktr.ee/guilhermedpaiva" target="_blank" class="conteudo-site"><li>Guilherme Ricardo de Paiva</li></a>
+                    <a href="https://linktr.ee/isadoragomess" target="_blank" class="conteudo-site"><li>Isadora Gomes da Silva</li></a>
+                    <a href="https://linktr.ee/lucasbalderrama"target="_blank" class="conteudo-site"><li>Lucas Randal Abreu Balderrama</li></a>
+                </ul>
       </div>
 
     </div>
