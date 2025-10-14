@@ -270,7 +270,9 @@ foreach ($produtos as $produto) {
 
   <footer>
     <div id="footer">
-
+<div>
+  <img src="./img/logo-candy-branca.png" alt="logo versão branca" class="mini-logo">
+</div>
       <div class="contato">
         <h2>Informações de Contato</h2>
         <p><strong>Candy Stock:</strong></p>

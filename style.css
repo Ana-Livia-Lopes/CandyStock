@@ -50,9 +50,20 @@
     font-weight: bold;
   }
 
+  .menu ul li a:hover {
+    color: #e8c869;
+
+  }
+
   .logo {
     width: 80px;
   }
+
+  .mini-logo {
+  width: 120px;
+  height: 120px;
+  margin: 20px auto;
+}
 
   .texto-cabecalho h1 {
     margin-top: 100px;
@@ -280,10 +291,7 @@
     height: 50px;
     padding: 5px;
   }
-  
-  .swal2-input-container #qnt{
-    margin: 0 20px;
-  }
+
 
   .swal2-input-container .pt1,
   .pt2 {
@@ -293,7 +301,7 @@
 
   .swal2-input-container .pt2{
     margin-top: 10px;
-  }
+  } 
 
   .swal2-input-container select{
     height: 50px;
@@ -355,13 +363,14 @@
   }
 
   #footer {
-    justify-content: space-evenly;
+justify-content: center;
     display: flex;
     padding: 20px;
+    gap: 160px;
   }
 
   footer h2 {
-    margin-bottom: 10px;
+    margin: 10px auto;
   }
 
   footer ul {
@@ -475,6 +484,28 @@
       gap: 15px;
     }
 
+    .swal2-input-container input[type="file"], #desc input{
+    width: 300px;
+    height: 100px;
+    margin: 0;
+  }
+
+  .swal2-input-container input[type="file"]::file-selector-button{
+text-align: center;
+    margin: 0 auto;
+    padding: 10px;
+  }
+  
+  .swal2-input-container input[type="file"] {
+    padding: 7%;
+    text-align: center;
+}
+.botoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
     #caixa-img {
       margin: 0;
           width: 340px;
@@ -494,5 +525,14 @@
 .info{
   width: 300px;
 
+}
+
+#footer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 0 70px;
+  height: 600px;
 }
   }
