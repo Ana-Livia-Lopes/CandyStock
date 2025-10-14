@@ -28,25 +28,22 @@ $usuario = Usuario::getSessao();
 </head>
 
 <body>
-    <div class="cabecalho">
-        <div class="menu">
+    <div class="menu">
+        <div>
             <img src="./img/logo-candy-senfundo.png" alt="logo" class="logo">
-
-            <!-- Botão hambúrguer -->
-            <div class="hamburguer" id="hamburguer">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-
-            <ul id="nav-links">
-                <li><a href="index.php">Produtos</a></li>
-                <li><a href="relatorios.php">Relatórios</a></li>
-                <li><a href="perfil.php">Perfil</a></li>
-                <li><a href="sair.php">Sair</a></li>
-            </ul>
+            <p>Perfil</p>
         </div>
+
+        <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+
+        <ul id="nav-links">
+            <li><a href="index.php">Produtos</a></li>
+            <li><a href="relatorios.php">Relatórios</a></li>
+            <li><a href="perfil.php">Perfil</a></li>
+            <li><a href="sair.php">Sair</a></li>
+        </ul>
     </div>
+
 
     <div class="container-perfil">
         <div class="perfil-esquerda">
@@ -54,16 +51,18 @@ $usuario = Usuario::getSessao();
         </div>
 
         <div class="perfil-direita">
-            <h2>Perfil</h2>
+            <h2>Editar perfil</h2>
             <form id="form-perfil">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($usuario->getNome()) ?>" required>
 
                 <label for="telefone">Telefone:</label>
-                <input type="tel" id="telefone" name="telefone" value="<?= htmlspecialchars($usuario->getTelefone()) ?>" required>
+                <input type="tel" id="telefone" name="telefone" value="<?= htmlspecialchars($usuario->getTelefone()) ?>"
+                    required>
 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="<?= htmlspecialchars($usuario->getEmail()) ?>" required>
+                <input type="email" id="email" name="email" value="<?= htmlspecialchars($usuario->getEmail()) ?>"
+                    required>
 
                 <label for="senha">Nova Senha (deixe em branco para manter a atual):</label>
                 <input type="password" id="senha" name="senha" placeholder="Digite uma nova senha (opcional)">
@@ -102,16 +101,13 @@ $usuario = Usuario::getSessao();
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        const hamburguer = document.getElementById('hamburguer');
-        const navLinks = document.getElementById('nav-links');
-
-        hamburguer.addEventListener('click', () => {
-            hamburguer.classList.toggle('ativo');
-            navLinks.classList.toggle('show');
-        });
+        function toggleMenu() {
+            const menu = document.querySelector('.menu ul');
+            menu.classList.toggle('active');
+        }
 
         // Validação e envio do formulário
-        $('#form-perfil').on('submit', async function(e) {
+        $('#form-perfil').on('submit', async function (e) {
             e.preventDefault();
 
             const nome = $('#nome').val().trim();
