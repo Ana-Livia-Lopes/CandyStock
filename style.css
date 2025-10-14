@@ -100,6 +100,17 @@
     text-align: center;
   }
 
+  .caixa-resumo p{
+    display: flex;
+    align-items: center;
+    text-align: center;
+   gap: 10px;
+  }
+
+  .caixa-resumo i{
+    margin-left: 50px
+  }
+
   /* Pesquisa */
   .pesquisa {
     display: flex;
