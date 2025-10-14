@@ -1,3 +1,33 @@
+<?php
+include 'php/features.php';
+
+if (Usuario::hasSessao()) {
+    header("Location: index.php");
+}
+
+$erro = null;
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (
+        isset($_POST['email']) &&
+        isset($_POST['senha'])
+    ) {
+        $resultado = Usuario::entrar(
+            $_POST['email'],
+            $_POST['senha']
+        );
+
+        if ($resultado->erro != null) {
+            $erro = $resultado->erro;
+        } else {
+            header("Location: index.php");
+        }
+    } else {
+        $erro = "Campos faltando";
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -9,6 +39,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>Login</title>
   <link rel="stylesheet" href="login.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -22,7 +53,7 @@
       <h1>Entrar</h1>
     </div>
 
-    <form>
+    <form action="login.php" method="POST">
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required>
 
@@ -33,10 +64,12 @@
         <a href="./esqueceuSenha.html">Esqueceu a senha?</a>
       </div>
 
-      <a href="index.html" class="btn-entrar">Entrar</a>
+      <button type="submit" class="btn-entrar">
+        Entrar
+      </button>
 
       <p class="cadastro">
-        Não possui conta? <a href="./cadastro.html">Cadastrar</a>
+        Não possui conta? <a href="./cadastro.php">Cadastrar</a>
       </p>
     </form>
   </div>

@@ -46,7 +46,7 @@ body {
     text-align: center;
     background: transparent;
     width: 100%;
-    max-width: 560px;
+    max-width: 500px;
     margin-top: -30px;
 }
 
@@ -56,7 +56,7 @@ body {
 }
 
 .logo h1 {
-    font-size: 40px;
+    font-size: 36px;
     color: #3E3E3E;
     margin: 0;
     font-weight: 800;
@@ -74,18 +74,18 @@ label {
     font-weight: lighter;
     color: #333;
     margin: 15px 0 8px;
-    font-size: 20px;
-    width: 540px;
+    font-size: 18px;
+    width: 400px;
 }
 
 input {
     border: none;
     border-bottom: 2px solid #555;
     background: none;
-    padding: 14px;
-    font-size: 18px;
+    padding: 10px;
+    font-size: 16px;
     outline: none;
-    width: 540px;
+    width: 400px;
     box-sizing: border-box;
     transition: border-color 0.3s;
 }
@@ -97,7 +97,7 @@ input:focus {
 .opcoes {
     text-align: right;
     margin-top: 10px;
-    width: 540px;
+    width: 400px;
 }
 
 .opcoes a {
@@ -111,9 +111,9 @@ input:focus {
     color: white;
     border: none;
     border-radius: 35px;
-    width: 180px;
-    padding: 14px;
-    font-size: 18px;
+    width: 160px;
+    padding: 12px;
+    font-size: 16px;
     cursor: pointer;
     margin-top: 35px;
     transition: 0.3s;
@@ -125,7 +125,7 @@ input:focus {
 }
 
 .cadastro {
-    font-size: 15px;
+    font-size: 14px;
     margin-top: 15px;
     color: #333;
     font-weight: lighter;
@@ -148,7 +148,7 @@ a {
     body {
         height: auto;
         overflow-y: auto;
-        padding-top: 80px; 
+        padding-top: 80px;
         padding-bottom: 80px;
     }
 
@@ -178,31 +178,31 @@ a {
     }
 
     .logo h1 {
-        font-size: 36px;
+        font-size: 32px;
     }
 
     label,
     input,
     .opcoes {
         width: 90%;
-        max-width: 450px;
+        max-width: 360px;
     }
 
     input {
-        padding: 12px;
-        font-size: 16px;
+        padding: 9px;
+        font-size: 15px;
     }
 
     .btn-entrar {
-        width: 160px;
-        padding: 12px;
-        font-size: 16px;
+        width: 150px;
+        padding: 10px;
+        font-size: 15px;
     }
 }
 
 @media (max-width: 768px) {
     body {
-        padding-top: 60px; 
+        padding-top: 60px;
         padding-bottom: 60px;
     }
 
@@ -231,18 +231,18 @@ a {
     }
 
     .logo h1 {
-        font-size: 30px;
+        font-size: 28px;
     }
 
     label,
     input,
     .opcoes {
         width: 100%;
-        max-width: 300px;
+        max-width: 250px;
     }
 
     input {
-        padding: 10px;
+        padding: 8px;
         font-size: 14px;
     }
 
@@ -251,19 +251,19 @@ a {
     }
 
     .btn-entrar {
-        width: 140px;
-        padding: 10px;
-        font-size: 15px;
+        width: 130px;
+        padding: 8px;
+        font-size: 14px;
     }
 
     .cadastro {
-        font-size: 14px;
+        font-size: 13px;
     }
 }
 
 @media (max-width: 480px) {
     body {
-        padding-top: 130px; 
+        padding-top: 130px;
         padding-bottom: 40px;
     }
 
@@ -293,15 +293,20 @@ a {
     label,
     input,
     .opcoes {
-        max-width: 250px;
+        max-width: 200px;
+    }
+
+    input {
+        padding: 7px;
+        font-size: 13px;
     }
 
     .btn-entrar {
         width: 120px;
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .cadastro {
-        font-size: 13px;
+        font-size: 12px;
     }
 }
