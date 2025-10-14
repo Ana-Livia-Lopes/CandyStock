@@ -41,7 +41,7 @@ $usuario = Usuario::getSessao();
 
             <ul id="nav-links">
                 <li><a href="index.php">Produtos</a></li>
-                <li><a href="relatorios.html">Relatórios</a></li>
+                <li><a href="relatorios.php">Relatórios</a></li>
                 <li><a href="perfil.php">Perfil</a></li>
                 <li><a href="sair.php">Sair</a></li>
             </ul>
