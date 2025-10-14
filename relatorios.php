@@ -19,7 +19,7 @@ foreach ($produtos as $produto) {
     if ($produto->hasEstoqueBaixo()) {
         $produtosComEstoqueBaixo++;
     }
-    
+
     $produtosRanking[] = [
         'nome' => $produto->getNome(),
         'estoque' => $produto->getEstoque(),
@@ -28,7 +28,7 @@ foreach ($produtos as $produto) {
 }
 
 // Ordenar por estoque (maior para menor)
-usort($produtosRanking, function($a, $b) {
+usort($produtosRanking, function ($a, $b) {
     return $b['estoque'] - $a['estoque'];
 });
 
@@ -57,11 +57,11 @@ $movimentacoesPorProduto = [];
 foreach ($movimentacoes as $mov) {
     if ($mov['direcao'] === 'entrada') {
         $totalEntradas += $mov['quantidade'];
-        $movimentacoesPorProduto[$mov['produto_nome']]['entradas'] = 
+        $movimentacoesPorProduto[$mov['produto_nome']]['entradas'] =
             ($movimentacoesPorProduto[$mov['produto_nome']]['entradas'] ?? 0) + $mov['quantidade'];
     } else {
         $totalSaidas += $mov['quantidade'];
-        $movimentacoesPorProduto[$mov['produto_nome']]['saidas'] = 
+        $movimentacoesPorProduto[$mov['produto_nome']]['saidas'] =
             ($movimentacoesPorProduto[$mov['produto_nome']]['saidas'] ?? 0) + $mov['quantidade'];
     }
 }
@@ -91,34 +91,34 @@ $labels = [];
 for ($i = 7; $i >= 0; $i--) {
     $dataInicio = date('Y-m-d', strtotime("-" . (($i + 1) * 3) . " days"));
     $dataFim = date('Y-m-d', strtotime("-" . ($i * 3) . " days"));
-    
+
     // Label para exibição
     $labels[] = date('d/m', strtotime($dataFim));
-    
+
     // Buscar movimentações neste período
     $sql = "SELECT direcao, SUM(quantidade) as total
             FROM movimentacoes 
             WHERE DATE(data_hora) BETWEEN ? AND ?
             GROUP BY direcao";
     $stmt = $conn->prepare($sql);
-    
+
     $entradas = 0;
     $saidas = 0;
-    
+
     if ($stmt) {
         $stmt->bind_param("ss", $dataInicio, $dataFim);
         if ($stmt->execute()) {
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
                 if ($row['direcao'] === 'entrada') {
-                    $entradas = (int)$row['total'];
+                    $entradas = (int) $row['total'];
                 } else {
-                    $saidas = (int)$row['total'];
+                    $saidas = (int) $row['total'];
                 }
             }
         }
     }
-    
+
     $dadosGrafico[] = [
         'entradas' => $entradas,
         'saidas' => $saidas
@@ -173,10 +173,14 @@ for ($i = 7; $i >= 0; $i--) {
                 </div>
                 <hr>
                 <div>
-                    <p><span style="font-weight: bold;">Produto mais vendido: </span><?= $produtoMaisVendido ?: 'N/A' ?></p>
-                    <p><span style="font-weight: bold;">Quantidade vendida: </span><?= $quantidadeMaisVendida ?: 0 ?></p>
-                    <p><span style="font-weight: bold;">Produto menos vendido: </span><?= $produtoMenosVendido ?: 'N/A' ?></p>
-                    <p><span style="font-weight: bold;">Quantidade vendida: </span><?= $quantidadeMenosVendida < PHP_INT_MAX ? $quantidadeMenosVendida : 0 ?></p>
+                    <p><span style="font-weight: bold;">Produto mais vendido: </span><?= $produtoMaisVendido ?: 'N/A' ?>
+                    </p>
+                    <p><span style="font-weight: bold;">Quantidade vendida: </span><?= $quantidadeMaisVendida ?: 0 ?>
+                    </p>
+                    <p><span style="font-weight: bold;">Produto menos vendido:
+                        </span><?= $produtoMenosVendido ?: 'N/A' ?></p>
+                    <p><span style="font-weight: bold;">Quantidade vendida:
+                        </span><?= $quantidadeMenosVendida < PHP_INT_MAX ? $quantidadeMenosVendida : 0 ?></p>
                     <a href="#rank-entrada"><button>Ver todos</button></a>
                 </div>
                 <hr>
@@ -206,11 +210,11 @@ for ($i = 7; $i >= 0; $i--) {
             </div>
             <ul id="rankingEstoque">
                 <?php foreach ($produtosRanking as $index => $produto): ?>
-                <li>
-                    <span><?= $index + 1 ?>º</span>
-                    <span><?= htmlspecialchars($produto['nome']) ?></span>
-                    <span><?= $produto['estoque'] ?></span>
-                </li>
+                    <li>
+                        <span><?= $index + 1 ?>º</span>
+                        <span><?= htmlspecialchars($produto['nome']) ?></span>
+                        <span><?= $produto['estoque'] ?></span>
+                    </li>
                 <?php endforeach; ?>
             </ul>
         </div>
@@ -228,12 +232,24 @@ for ($i = 7; $i >= 0; $i--) {
         <div class="equipe">
             <h2>Equipe Desenvolvedora</h2>
             <ul>
-                <p>Ana Lívia dos Santos Lopes</p>
-                <p>Gabriel Reis de Brito</p>
-                <p>Isadora Gomes da Silva</p>
-                <p>Lucas Randal Abreu Balderrama</p>
-                <p>Flavia Glenda Guimarães Carvalho</p>
-                <p>Guilherme Ricardo de Paiva</p>
+                <a href="https://linktr.ee/analivialopess" target="_blank" class="conteudo-site">
+                    <li>Ana Lívia dos Santos Lopes</li>
+                </a>
+                <a href="https://linktr.ee/flaviaglenda" target="_blank" class="conteudo-site">
+                    <li>Flávia Glenda Guimarães Carvalho</li>
+                </a>
+                <a href="https://linktr.ee/gabrielreiss" target="_blank" class="conteudo-site">
+                    <li>Gabriel Reis de Brito</li>
+                </a>
+                <a href="https://linktr.ee/guilhermedpaiva" target="_blank" class="conteudo-site">
+                    <li>Guilherme Ricardo de Paiva</li>
+                </a>
+                <a href="https://linktr.ee/isadoragomess" target="_blank" class="conteudo-site">
+                    <li>Isadora Gomes da Silva</li>
+                </a>
+                <a href="https://linktr.ee/lucasbalderrama" target="_blank" class="conteudo-site">
+                    <li>Lucas Randal Abreu Balderrama</li>
+                </a>
             </ul>
         </div>
     </footer>
@@ -252,7 +268,7 @@ for ($i = 7; $i >= 0; $i--) {
 
         // Gráfico de linha - Histórico de entradas/saídas (DADOS REAIS)
         const ctx = document.getElementById('graficoArea');
-        
+
         // Extrair dados reais do PHP
         const entradasData = dadosGrafico.map(periodo => periodo.entradas);
         const saidasData = dadosGrafico.map(periodo => periodo.saidas);
@@ -356,10 +372,10 @@ for ($i = 7; $i >= 0; $i--) {
                 datasets: [{
                     label: 'Estoque atual',
                     data: estoqueAtual,
-                    backgroundColor: estoqueAtual.map(estoque => 
+                    backgroundColor: estoqueAtual.map(estoque =>
                         estoque < <?= Produto::ESTOQUE_BAIXO_LIMITE ?> ? 'rgba(255, 25, 25, 0.6)' : 'rgba(48, 207, 77, 0.6)'
                     ),
-                    borderColor: estoqueAtual.map(estoque => 
+                    borderColor: estoqueAtual.map(estoque =>
                         estoque < <?= Produto::ESTOQUE_BAIXO_LIMITE ?> ? 'rgba(255, 25, 25, 1)' : 'rgba(48, 207, 77, 1)'
                     ),
                     borderWidth: 1,

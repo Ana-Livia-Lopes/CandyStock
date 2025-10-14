@@ -289,7 +289,7 @@ foreach ($produtos as $produto) {
           <a href="https://linktr.ee/analivialopess" target="_blank" class="conteudo-site">
             <li>Ana Lívia dos Santos Lopes</li>
           </a>
-          <a href="https://www.linkedin.com/in/fl%C3%A1via-glenda-1992a72b6/" target="_blank" class="conteudo-site">
+          <a href="https://linktr.ee/flaviaglenda" target="_blank" class="conteudo-site">
             <li>Flávia Glenda Guimarães Carvalho</li>
           </a>
           <a href="https://linktr.ee/gabrielreiss" target="_blank" class="conteudo-site">

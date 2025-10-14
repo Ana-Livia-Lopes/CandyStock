@@ -175,7 +175,15 @@ footer h2 {
   margin-bottom: 10px;
 }
 
-  
+#footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+#footer a {
+  color: white;
+  text-decoration: none;
+}
 
 @media (max-width: 1024px) {
   .menu ul {

@@ -75,34 +75,43 @@ $usuario = Usuario::getSessao();
         </div>
     </div>
 
-  <footer>
-    <div id="footer">
-<div>
-  <img src="./img/logo-candy-branca.png" alt="logo versão branca" class="mini-logo">
-</div>
-      <div class="contato">
-        <h2>Informações de Contato</h2>
-        <p><strong>Candy Stock:</strong></p>
-        <p>Endereço: Av. Brasil, 90, Caçapava - SP, 12084-090</p>
-        <p>Telefone: (12) 9953-1976</p>
-        <p>E-mail: candystock@gmail.com</p>
+    <footer>
+        <div id="footer">
+            <div class="contato">
+                <h2>Informações de Contato</h2>
+                <p><strong>Candy Stock:</strong></p>
+                <p>Endereço: Av. Brasil, 90, Caçapava - SP, 12084-090</p>
+                <p>Telefone: (12) 9953-1976</p>
+                <p>E-mail: candystock@gmail.com</p>
 
-      </div>
+            </div>
 
-      <div class="equipe">
-        <h2>Equipe Desenvolvedora</h2>
-         <ul>
-                    <a href="https://linktr.ee/analivialopess" target="_blank" class="conteudo-site"><li>Ana Lívia dos Santos Lopes</li></a>
-                    <a href="https://linktr.ee/flaviaglenda" target="_blank" class="conteudo-site"><li>Flávia Glenda Guimarães Carvalho</li></a>
-                    <a href="https://linktr.ee/gabrielreiss" target="_blank" class="conteudo-site"><li>Gabriel Reis de Brito</li></a>
-                    <a href="https://linktr.ee/guilhermedpaiva" target="_blank" class="conteudo-site"><li>Guilherme Ricardo de Paiva</li></a>
-                    <a href="https://linktr.ee/isadoragomess" target="_blank" class="conteudo-site"><li>Isadora Gomes da Silva</li></a>
-                    <a href="https://linktr.ee/lucasbalderrama"target="_blank" class="conteudo-site"><li>Lucas Randal Abreu Balderrama</li></a>
+            <div class="equipe">
+                <h2>Equipe Desenvolvedora</h2>
+                <ul>
+                    <a href="https://linktr.ee/analivialopess" target="_blank" class="conteudo-site">
+                        <li>Ana Lívia dos Santos Lopes</li>
+                    </a>
+                    <a href="https://linktr.ee/flaviaglenda" target="_blank" class="conteudo-site">
+                        <li>Flávia Glenda Guimarães Carvalho</li>
+                    </a>
+                    <a href="https://linktr.ee/gabrielreiss" target="_blank" class="conteudo-site">
+                        <li>Gabriel Reis de Brito</li>
+                    </a>
+                    <a href="https://linktr.ee/guilhermedpaiva" target="_blank" class="conteudo-site">
+                        <li>Guilherme Ricardo de Paiva</li>
+                    </a>
+                    <a href="https://linktr.ee/isadoragomess" target="_blank" class="conteudo-site">
+                        <li>Isadora Gomes da Silva</li>
+                    </a>
+                    <a href="https://linktr.ee/lucasbalderrama" target="_blank" class="conteudo-site">
+                        <li>Lucas Randal Abreu Balderrama</li>
+                    </a>
                 </ul>
-      </div>
+            </div>
 
-    </div>
-  </footer>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
