@@ -29,7 +29,7 @@ if (!Usuario::hasSessao()) {
     );
 }
 
-Produto::criar(
+$resultado = Produto::criar(
     $_POST['nome'],
     $_POST['descricao'],
     floatval($_POST['preco']),
@@ -37,7 +37,24 @@ Produto::criar(
     $_FILES['imagem']['tmp_name'],
 );
 
-jsonResponse(
-    "success",
-    "Produto adicionado com sucesso",
-);
+if ($resultado->produto) {
+    $produto = $resultado->produto;
+    jsonResponse(
+        "success",
+        "Produto adicionado com sucesso",
+        [
+            "id" => $produto->getId(),
+            "nome" => $produto->getNome(),
+            "descricao" => $produto->getDescricao(),
+            "preco" => $produto->getPreco(),
+            "estoque" => $produto->getEstoque(),
+            "ativo" => $produto->getAtivo(),
+            "imagem" => $produto->getImagem()->getCaminho()
+        ]
+    );
+} else {
+    jsonResponse(
+        "error",
+        $resultado->erro ?? "Erro ao criar produto",
+    );
+}

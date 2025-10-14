@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       <input type="password" id="senha" name="senha" required>
 
       <div class="opcoes">
-        <a href="./esqueceuSenha.html">Esqueceu a senha?</a>
+        <a href="esqueceuSenha.php">Esqueceu a senha?</a>
       </div>
 
       <button type="submit" class="btn-entrar">

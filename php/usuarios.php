@@ -242,6 +242,63 @@ class Usuario {
     public static function getSessao(): SessaoUsuario {
         return unserialize($_SESSION['sessao'], ['allowed_classes' => [SessaoUsuario::class]]);
     }
+
+    public static function redefinirSenha(string $email, string $novaSenha): Resultado {
+        $email = trim($email);
+        $novaSenha = trim($novaSenha);
+
+        if (empty($email) || empty($novaSenha)) {
+            return new Resultado(false, "Email e senha são obrigatórios");
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return new Resultado(false, "Email inválido");
+        }
+
+        if (strlen($novaSenha) < 6) {
+            return new Resultado(false, "A senha deve ter pelo menos 6 caracteres");
+        }
+
+        global $conn;
+        $sql = "SELECT id FROM usuarios WHERE email = ?";
+        $stmt = $conn->prepare($sql);
+        if ($stmt === false) {
+            return new Resultado(false, "Erro na preparação da consulta");
+        }
+
+        $stmt->bind_param("s", $email);
+        if (!$stmt->execute()) {
+            return new Resultado(false, "Erro ao verificar usuário");
+        }
+
+        $result = $stmt->get_result();
+        if ($result->num_rows === 0) {
+            return new Resultado(false, "Usuário não encontrado com este email");
+        }
+
+        $row = $result->fetch_assoc();
+        $userId = $row['id'];
+
+        $hashedSenha = password_hash($novaSenha, PASSWORD_DEFAULT);
+        $sql = "UPDATE usuarios SET senha = ? WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt === false) {
+            return new Resultado(false, "Erro na preparação da consulta de atualização");
+        }
+
+        $stmt->bind_param("si", $hashedSenha, $userId);
+
+        if (!$stmt->execute()) {
+            return new Resultado(false, "Erro ao atualizar a senha");
+        }
+
+        if ($stmt->affected_rows === 0) {
+            return new Resultado(false, "Nenhuma alteração foi feita");
+        }
+
+        return new Resultado(true, "Senha redefinida com sucesso");
+    }
 }
 
 class SessaoUsuario extends Usuario {

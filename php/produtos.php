@@ -131,7 +131,8 @@ class Produto {
         }
 
         $id = $this->getId();
-        $stmt->bind_param("iis", $id, $usuario->id, $conteudo);
+        $id_usuario = $usuario->id;
+        $stmt->bind_param("iis", $id, $id_usuario, $conteudo);
 
         if (!$stmt->execute()) {
             return new Resultado(false, "Erro ao adicionar comentário");
@@ -196,7 +197,8 @@ class Produto {
             return new Resultado(false, "Erro na preparação da consulta");
         }
         $id = $this->getId();
-        $stmt->bind_param("iisi", $id, $usuario->id, $direcao, $quantidadeAbs);
+        $id_usuario = $usuario->id;
+        $stmt->bind_param("iisi", $id, $id_usuario, $direcao, $quantidadeAbs);
         if (!$stmt->execute()) {
             return new Resultado(false, "Erro ao registrar movimentação");
         }
