@@ -149,6 +149,20 @@ class Produto {
         $id = $this->getId();
 
         global $conn;
+        $sql = 'DELETE FROM movimentacoes WHERE id_produto = ?';
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        if (!$stmt->execute()) {
+            return new Resultado(false, "Erro ao excluir movimentações do produto");
+        }
+        
+        $sql = "DELETE FROM comentarios WHERE id_produto = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        if (!$stmt->execute()) {
+            return new Resultado(false, "Erro ao excluir comentários do produto");
+        }
+
         $sql = "DELETE FROM produtos WHERE id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id);
