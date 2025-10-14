@@ -9,12 +9,17 @@ class Produto {
     private float $preco;
     private bool $ativo;
 
+    public function getId(): int { return $this->id; }
+
     public function getNome(): string { return $this->nome; }
     public function getDescricao(): string { return $this->descricao; }
     public function getImagem(): Imagem { return $this->imagem; }
     public function getEstoque(): int { return $this->estoque; }
     public function getPreco(): float { return $this->preco; }
     public function getAtivo(): bool { return $this->ativo; }
+
+    public function hasEstoqueBaixo(): bool { return $this->estoque < Produto::ESTOQUE_BAIXO_LIMITE; }
+    CONST ESTOQUE_BAIXO_LIMITE = 50;
 
     private function __construct(
         int $id,
@@ -125,7 +130,8 @@ class Produto {
             return new Resultado(false, "Erro na preparação da consulta");
         }
 
-        $stmt->bind_param("iis", $this->id, $usuario->id, $conteudo);
+        $id = $this->getId();
+        $stmt->bind_param("iis", $id, $usuario->id, $conteudo);
 
         if (!$stmt->execute()) {
             return new Resultado(false, "Erro ao adicionar comentário");
@@ -139,17 +145,19 @@ class Produto {
             return new Resultado(false, "Nenhuma sessão ativa");
         }
 
+        $id = $this->getId();
+
         global $conn;
         $sql = "DELETE FROM produtos WHERE id = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $this->id);
+        $stmt->bind_param("i", $id);
         if (!$stmt->execute()) {
             return new Resultado(false, "Erro ao excluir produto");
         }
 
         $sql = "DELETE FROM comentarios WHERE id_produto = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $this->id);
+        $stmt->bind_param("i", $id);
         if (!$stmt->execute()) {
             return new Resultado(false, "Erro ao excluir comentários do produto");
         }
@@ -187,7 +195,8 @@ class Produto {
         if ($stmt === false) {
             return new Resultado(false, "Erro na preparação da consulta");
         }
-        $stmt->bind_param("iisi", $this->id, $usuario->id, $direcao, $quantidadeAbs);
+        $id = $this->getId();
+        $stmt->bind_param("iisi", $id, $usuario->id, $direcao, $quantidadeAbs);
         if (!$stmt->execute()) {
             return new Resultado(false, "Erro ao registrar movimentação");
         }
@@ -198,7 +207,7 @@ class Produto {
         if ($stmt === false) {
             return new Resultado(false, "Erro na preparação da consulta");
         }
-        $stmt->bind_param("ii", $this->estoque, $this->id);
+        $stmt->bind_param("ii", $this->estoque, $id);
         if (!$stmt->execute()) {
             return new Resultado(false, "Erro ao atualizar estoque");
         }
@@ -214,7 +223,8 @@ class Produto {
         if ($stmt === false) {
             return [];
         }
-        $stmt->bind_param("i", $this->id);
+        $id = $this->getId();
+        $stmt->bind_param("i", $id);
         if (!$stmt->execute()) {
             return [];
         }
@@ -274,7 +284,8 @@ class Produto {
         if ($stmt === false) {
             return [];
         }
-        $stmt->bind_param("i", $this->id);
+        $id = $this->getId();
+        $stmt->bind_param("i", $id);
         if (!$stmt->execute()) {
             return [];
         }
@@ -332,7 +343,7 @@ class Produto {
         string $descricao,
         float $preco,
         int $estoqueInicial,
-        string $caminhoImg
+        string $caminhoImg,
     ): ResultadoProduto {
         if (!Usuario::hasSessao()) {
             return new ResultadoProduto(null, "Nenhuma sessão ativa");
@@ -380,18 +391,18 @@ class Produto {
     }
 
     public static function pesquisar(
-        ?string $nome,
-        ?float $preco_min,
-        ?float $preco_max,
-        ?bool $ativo,
-        ?int $estoque_min,
-        ?int $estoque_max,
+        ?string $nome = null,
+        ?float $preco_min = null,
+        ?float $preco_max = null,
+        ?bool $ativo = null,
+        ?int $estoque_min = null,
+        ?int $estoque_max = null,
     ): array {
         global $conn;
         $whereClausulas = [];
         $tipos = [];
         $params = [];
-        if ($nome !== null) {
+        if ($nome !== null && trim($nome) !== "") {
             $whereClausulas[] = "nome LIKE ?";
             $tipos[] = "s";
             $params[] = "%" . $nome . "%";
@@ -448,6 +459,32 @@ class Produto {
             );
         }
         return $produtos;
+    }
+
+    public static function byId(int $id) {
+        global $conn;
+        $sql = "SELECT * FROM produtos WHERE id = ? LIMIT 1";
+        $stmt = $conn->prepare($sql);
+        if ($stmt === false) {
+            return null;
+        }
+        $stmt->bind_param("i", $id);
+        if (!$stmt->execute()) {
+            return null;
+        }
+        $result = $stmt->get_result();
+        if ($result->num_rows === 0) {
+            return null;
+        }
+        $tupla = $result->fetch_assoc();
+        return new Produto(
+            $tupla['id'],
+            $tupla['nome'],
+            $tupla['descricao'],
+            $tupla['estoque'],
+            $tupla['preco'],
+            (bool)$tupla['ativo']
+        );
     }
 }
 
@@ -641,6 +678,20 @@ class Comentario {
             return new Resultado(false, "Erro ao excluir comentário");
         }
         return new Resultado(true, "Comentário excluído com sucesso");
+    }
+
+    public function toJSON(): array {
+        return [
+            "id" => $this->id,
+            "produto_id" => $this->produto->id,
+            "usuario" => [
+                "id" => $this->usuario->id,
+                "nome" => $this->usuario->getNome(),
+                "email" => $this->usuario->getEmail()
+            ],
+            "conteudo" => $this->conteudo,
+            "data_hora" => $this->data_hora->format(DateTime::ATOM)
+        ];
     }
 }
 

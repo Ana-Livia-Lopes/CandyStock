@@ -12,7 +12,7 @@ class Usuario {
     public function getEmail(): string { return $this->email; }
     public function isAdmin(): bool { return $this->admin; }
 
-    protected public function __construct(
+    public function __construct(
         int $id,
         string $nome,
         string $telefone,
@@ -135,14 +135,42 @@ class Usuario {
         string $telefone,
         string $email,
         string $senha
-    ): ResultadoRegistro {
-        if (!self::hasSessao()) {
-            return new ResultadoRegistro(null, "Nenhuma sessão ativa");
-        }
-        $sessao = Usuario::getSessao();
+    ): ResultadoSessao {
+        // if (!self::hasSessao()) {
+        //     return new ResultadoSessao(null, "Nenhuma sessão ativa");
+        // }
+        // $sessao = Usuario::getSessao();
 
-        if (!$sessao->isAdmin()) {
-            return new ResultadoRegistro(null, "Permissão negada");
+        // if (!$sessao->isAdmin()) {
+        //     return new ResultadoSessao(null, "Permissão negada");
+        // }
+
+        $vazios = [];
+
+        $nome = trim($nome);
+        if ($nome === "") {
+            $vazios[] = "nome";
+        }
+        $telefone = trim($telefone);
+        if ($telefone === "") {
+            $vazios[] = "telefone";
+        }
+        $email = trim($email);
+        if ($email === "") {
+            $vazios[] = "email";
+        }
+        $senha = trim($senha);
+        if ($senha === "") {
+            $vazios[] = "senha";
+        }
+
+        if (count($vazios) > 0) {
+            $lista = implode(", ", $vazios);
+            return new ResultadoSessao(null, "Os seguintes campos estão vazios: $lista");
+        }
+
+        if (!str_contains($email, "@")) {
+            return new ResultadoSessao(null, "E-mail inválido");
         }
         
         global $conn;
@@ -153,7 +181,7 @@ class Usuario {
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            return new ResultadoRegistro(null, "E-mail já cadastrado");
+            return new ResultadoSessao(null, "E-mail já cadastrado");
         }
 
         $hashedSenha = password_hash($senha, PASSWORD_DEFAULT);
@@ -163,13 +191,15 @@ class Usuario {
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssss", $nome, $telefone, $email, $hashedSenha);
         if (!$stmt->execute()) {
-            return new ResultadoRegistro(null, "Erro ao registrar usuário");
+            return new ResultadoSessao(null, "Erro ao registrar usuário");
         }
 
         $id = $stmt->insert_id;
-        $usuario = new Usuario($id, $nome, $telefone, $email, false);
+        $usuario = new SessaoUsuario($id, $nome, $telefone, $email, false);
 
-        return new ResultadoRegistro($usuario, null);
+        $_SESSION['sessao'] = serialize($usuario);
+
+        return new ResultadoSessao($usuario, null);
     }
 
     public static function entrar(
