@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>Login</title>
-  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="./css/login.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 

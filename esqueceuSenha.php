@@ -18,7 +18,7 @@ if (Usuario::hasSessao()) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <title>Redefinir senha - CandyStock</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="./css/login.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
