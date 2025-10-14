@@ -533,6 +533,7 @@ foreach ($produtos as $produto) {
               });
             }
           } catch (error) {
+            console.log(error)
             Swal.fire({
               title: "Erro!",
               text: "Ocorreu um erro ao excluir o produto.",
