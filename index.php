@@ -115,6 +115,8 @@ foreach ($produtos as $produto) {
         <div class="botoes">
           <i class="fa-solid fa-square-xmark"></i>
           <i class="fa-solid fa-square-pen"></i>
+          <i class="fa-solid fa-square-plus"></i>
+          <i class="fa-solid fa-square-minus"></i>
         </div>
         <p class="descricao">'. $produto->getDescricao() .'</p>
       </div>
@@ -436,12 +438,11 @@ foreach ($produtos as $produto) {
 
 
 
-    // lin, vc pode regatar os valores anteriores do produto no placeholder aqui de edição pfv?
     $('.fa-square-pen').click(function () {
       Swal.fire({
         title: 'Editar produto',
         confirmButtonText: 'Salvar produto',
-        width: '950px',
+        width: '780px',
         html: `<div class='swal2-input-container'>
           <div class= "pt1">
 
@@ -449,13 +450,10 @@ foreach ($produtos as $produto) {
         <input type='text' id='swal-input1' class='swal2-input' placeholder='Bala FINI Beijos'>
         <div id="div-pq">
           <div>
-            <label for="swal-input1">Preço</label>
+            <label for="swal-input1">Preço</label> <br>
             <input type='text' id='swal-input1' class="pq" placeholder='100,00'>
           </div>
-          <div id="qnt">
-            <label for="swal-input1" >Quantidade</label>
-            <input type='number' id='swal-input1' class='swal2-input' placeholder='200'>
-          </div>
+
         </div>
 
         <label for="swal-input1">Imagem do produto</label>
@@ -464,12 +462,12 @@ foreach ($produtos as $produto) {
 
       <div class="pt2">
         <div id="desc">
-          <label for="swal-input1">Descrição</label>
+          <label for="swal-input1">Descrição</label> <br>
           <input type='text' id='swal-input1' class='swal2-input' placeholder='Descreva detalhes sobre o produto'>
         </div>
 
         <label for="swal-input1">Status</label>
-        <select name="" id="">
+        <select name="" id="select">
           <option value="">Ativo</option>
           <option value="">Inativo</option>
         </select>
@@ -483,6 +481,62 @@ foreach ($produtos as $produto) {
           Swal.fire({
             title: "Editado!",
             text: "o produto foi editado no estoque.",
+            icon: "success"
+          });
+        }
+      });
+    });
+
+
+
+     $('.fa-square-plus').click(function () {
+      Swal.fire({
+        title: 'Adicionar quantidade de produto',
+        confirmButtonText: 'Salvar produto',
+        width: '650px',
+        html: `<div class='swal2-input-container'>
+
+       <div id="quantidade">
+            <label for="swal-input1" >Quantidade</label> <br>
+            <input type='number' id='input-produto-estoque' class='swal2-input' placeholder='200' value='0'>
+          </div>
+    </div>`,
+        confirmButtonColor: '#864B93',
+        cancelButtonText: 'Cancelar',
+        showCancelButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Adicionado!",
+            text: "o produto foi adicionado no estoque.",
+            icon: "success"
+          });
+        }
+      });
+    });
+
+
+
+         $('.fa-square-minus').click(function () {
+      Swal.fire({
+        title: 'Remover quantidade de produto',
+        confirmButtonText: 'Salvar produto',
+        width: '650px',
+        html: `<div class='swal2-input-container'>
+
+       <div id="quantidade">
+            <label for="swal-input1" >Quantidade</label> <br>
+            <input type='number' id='input-produto-estoque' class='swal2-input' placeholder='200' value='0'>
+          </div>
+    </div>`,
+        confirmButtonColor: '#864B93',
+        cancelButtonText: 'Cancelar',
+        showCancelButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Removido!",
+            text: "o produto foi removido no estoque.",
             icon: "success"
           });
         }

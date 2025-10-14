@@ -234,6 +234,14 @@
     height: 180px;
     margin: 0;
   }
+  #select{
+    height: 80px;
+  }
+  #quantidade{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .swal2-input-container input[type="file"]{
     padding: 12%;
   }
