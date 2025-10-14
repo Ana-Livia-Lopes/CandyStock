@@ -40,12 +40,16 @@ foreach ($produtos as $produto) {
 <body>
   <div class="cabecalho">
     <div class="menu">
-      <img src="./img/logo-candy-senfundo.png" alt="logo" class="logo">
-  <div class="hamburguer" id="hamburguer">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+      <div>
+        <img src="./img/logo-candy-senfundo.png" alt="logo" class="logo">
+        <p id="title">Produtos</p>
+      </div>
+      <div class="hamburguer" id="hamburguer">
+        <i class="fa-solid fa-bars" id="hamburguer-icon"></i>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
       <ul id="nav-links">
         <li><a href="index.php">Produtos</a></li>
@@ -69,7 +73,7 @@ foreach ($produtos as $produto) {
       } else {
         echo "$quantidade Produtos";
       }
-    ?></p>
+      ?></p>
     </div>
     <div class="caixa-resumo">
       <p><i class="fa-solid iconresumo fa-circle-check"></i> <?= $countProdutosSemFalta ?> Sem falta</p>
@@ -86,23 +90,23 @@ foreach ($produtos as $produto) {
 
   <!-- Produtos -->
   <div class="produtos">
-  <?php
+    <?php
     if (isset($_GET['pesquisa'])) {
       echo "<h1>Pesquisando por: {$_GET['pesquisa']}</h1>";
     }
-  ?>
+    ?>
     <div class="button">
       Adicionar produto
     </div>
     <?php
-      foreach ($produtos as $produto) {
-        /**
-         * @var Produto $produto
-         */
-        $produto;
-        echo '<div class="caixa-produto">
+    foreach ($produtos as $produto) {
+      /**
+       * @var Produto $produto
+       */
+      $produto;
+      echo '<div class="caixa-produto">
       <div id="caixa-img">
-        <img src="' . $produto->getImagem()->getCaminho() .'" alt="' . $produto->getNome() . '">
+        <img src="' . $produto->getImagem()->getCaminho() . '" alt="' . $produto->getNome() . '">
       </div>
       <div class="info">
         <div class="comment">
@@ -124,10 +128,10 @@ foreach ($produtos as $produto) {
           <i class="fa-solid fa-square-plus" id-produto=' . $produto->id . '></i>
           <i class="fa-solid fa-square-minus" id-produto=' . $produto->id . '></i>
         </div>
-        <p class="descricao">'. $produto->getDescricao() .'</p>
+        <p class="descricao">' . $produto->getDescricao() . '</p>
       </div>
     </div>';
-      }
+    }
     ?>
     <!-- <div class="caixa-produto">
       <div id="caixa-img">
@@ -270,9 +274,6 @@ foreach ($produtos as $produto) {
 
   <footer>
     <div id="footer">
-<div>
-  <img src="./img/logo-candy-branca.png" alt="logo versão branca" class="mini-logo">
-</div>
       <div class="contato">
         <h2>Informações de Contato</h2>
         <p><strong>Candy Stock:</strong></p>
@@ -284,14 +285,26 @@ foreach ($produtos as $produto) {
 
       <div class="equipe">
         <h2>Equipe Desenvolvedora</h2>
-         <ul>
-                    <a href="https://linktr.ee/analivialopess" target="_blank" class="conteudo-site"><li>Ana Lívia dos Santos Lopes</li></a>
-                    <a href="https://www.linkedin.com/in/fl%C3%A1via-glenda-1992a72b6/" target="_blank" class="conteudo-site"><li>Flávia Glenda Guimarães Carvalho</li></a>
-                    <a href="https://linktr.ee/gabrielreiss" target="_blank" class="conteudo-site"><li>Gabriel Reis de Brito</li></a>
-                    <a href="https://linktr.ee/guilhermedpaiva" target="_blank" class="conteudo-site"><li>Guilherme Ricardo de Paiva</li></a>
-                    <a href="https://linktr.ee/isadoragomess" target="_blank" class="conteudo-site"><li>Isadora Gomes da Silva</li></a>
-                    <a href="https://linktr.ee/lucasbalderrama"target="_blank" class="conteudo-site"><li>Lucas Randal Abreu Balderrama</li></a>
-                </ul>
+        <ul>
+          <a href="https://linktr.ee/analivialopess" target="_blank" class="conteudo-site">
+            <li>Ana Lívia dos Santos Lopes</li>
+          </a>
+          <a href="https://www.linkedin.com/in/fl%C3%A1via-glenda-1992a72b6/" target="_blank" class="conteudo-site">
+            <li>Flávia Glenda Guimarães Carvalho</li>
+          </a>
+          <a href="https://linktr.ee/gabrielreiss" target="_blank" class="conteudo-site">
+            <li>Gabriel Reis de Brito</li>
+          </a>
+          <a href="https://linktr.ee/guilhermedpaiva" target="_blank" class="conteudo-site">
+            <li>Guilherme Ricardo de Paiva</li>
+          </a>
+          <a href="https://linktr.ee/isadoragomess" target="_blank" class="conteudo-site">
+            <li>Isadora Gomes da Silva</li>
+          </a>
+          <a href="https://linktr.ee/lucasbalderrama" target="_blank" class="conteudo-site">
+            <li>Lucas Randal Abreu Balderrama</li>
+          </a>
+        </ul>
       </div>
 
     </div>
@@ -370,10 +383,10 @@ foreach ($produtos as $produto) {
           if (response.status === "success") {
             // Adicionar produto à lista sem reload
             adicionarProdutoNaTela(response.data);
-            
+
             // Atualizar estatísticas
             atualizarEstatisticas();
-            
+
             Swal.fire({
               icon: "success",
               title: "Sucesso ao adicionar produto",
@@ -387,7 +400,7 @@ foreach ($produtos as $produto) {
             });
           }
 
-          return true;          
+          return true;
         },
       })
     });
@@ -534,12 +547,12 @@ foreach ($produtos as $produto) {
 
     $('.fa-square-pen').click(async function () {
       const id = this.getAttribute("id-produto");
-      
+
       try {
         // Buscar dados do produto
         const produtoResponse = await fetch(`./buscar_produto.php?id=${id}`);
         const produtoData = await produtoResponse.json();
-        
+
         if (produtoData.status !== "success") {
           Swal.fire({
             title: "Erro!",
@@ -548,9 +561,9 @@ foreach ($produtos as $produto) {
           });
           return;
         }
-        
+
         const produto = produtoData.data;
-        
+
         Swal.fire({
           title: 'Editar produto',
           confirmButtonText: 'Salvar produto',
@@ -599,7 +612,7 @@ foreach ($produtos as $produto) {
             try {
               const formData = new FormData();
               formData.append('id', id);
-              
+
               if (nome.trim()) formData.append('nome', nome.trim());
               if (preco) formData.append('preco', preco);
               if (descricao.trim()) formData.append('descricao', descricao.trim());
@@ -650,7 +663,7 @@ foreach ($produtos as $produto) {
 
 
 
-     $('.fa-square-plus').click(function () {
+    $('.fa-square-plus').click(function () {
       const id = this.getAttribute("id-produto");
       Swal.fire({
         title: 'Adicionar quantidade de produto',
@@ -668,7 +681,7 @@ foreach ($produtos as $produto) {
         showCancelButton: true,
         preConfirm: async () => {
           const quantidade = document.getElementById('add-quantidade').value;
-          
+
           if (!quantidade || quantidade <= 0) {
             Swal.showValidationMessage('A quantidade deve ser maior que zero.');
             return false;
@@ -692,10 +705,10 @@ foreach ($produtos as $produto) {
               const quantidadeAtual = parseInt(produtoElement.find('#itens p:first').text().replace('Quantidade: ', ''));
               const novaQuantidade = quantidadeAtual + parseInt(quantidade);
               produtoElement.find('#itens p:first').text(`Quantidade: ${novaQuantidade}`);
-              
+
               // Atualizar estatísticas
               atualizarEstatisticas();
-              
+
               Swal.fire({
                 title: "Adicionado!",
                 text: data.message,
@@ -724,7 +737,7 @@ foreach ($produtos as $produto) {
 
 
 
-         $('.fa-square-minus').click(function () {
+    $('.fa-square-minus').click(function () {
       const id = this.getAttribute("id-produto");
       Swal.fire({
         title: 'Remover quantidade de produto',
@@ -742,7 +755,7 @@ foreach ($produtos as $produto) {
         showCancelButton: true,
         preConfirm: async () => {
           const quantidade = document.getElementById('rem-quantidade').value;
-          
+
           if (!quantidade || quantidade <= 0) {
             Swal.showValidationMessage('A quantidade deve ser maior que zero.');
             return false;
@@ -766,10 +779,10 @@ foreach ($produtos as $produto) {
               const quantidadeAtual = parseInt(produtoElement.find('#itens p:first').text().replace('Quantidade: ', ''));
               const novaQuantidade = quantidadeAtual - parseInt(quantidade);
               produtoElement.find('#itens p:first').text(`Quantidade: ${novaQuantidade}`);
-              
+
               // Atualizar estatísticas
               atualizarEstatisticas();
-              
+
               Swal.fire({
                 title: "Removido!",
                 text: data.message,
@@ -825,10 +838,10 @@ foreach ($produtos as $produto) {
           </div>
         </div>
       `;
-      
+
       // Inserir após o botão de adicionar produto
       $('.button').after(produtoHtml);
-      
+
       // Reativar eventos para os novos botões
       ativarEventosBotoes();
     }
@@ -838,10 +851,10 @@ foreach ($produtos as $produto) {
       try {
         const response = await fetch("./get_estatisticas.php");
         const data = await response.json();
-        
+
         if (data.status === "success") {
           const stats = data.data;
-          
+
           // Atualizar contadores na tela
           $('.fa-box-archive').parent().html(`<i class="fa-solid iconresumo fa-box-archive"></i> ${stats.total} Total`);
           $('.fa-circle-check').parent().html(`<i class="fa-solid iconresumo fa-circle-check"></i> ${stats.sem_falta} Sem falta`);
@@ -856,7 +869,7 @@ foreach ($produtos as $produto) {
     function ativarEventosBotoes() {
       // Remover eventos duplicados e reativar
       $('.fa-square-xmark, .fa-square-pen, .fa-square-plus, .fa-square-minus, .comentarios').off();
-      
+
       // Reativar todos os eventos
       ativarEventosComentarios();
       ativarEventosExcluir();
@@ -949,7 +962,7 @@ foreach ($produtos as $produto) {
       $('.fa-square-xmark').off('click').on('click', function () {
         const id = this.getAttribute("id-produto");
         const produtoElement = $(this).closest('.caixa-produto');
-        
+
         Swal.fire({
           title: "Tem certeza que deseja excluir?",
           text: "essa ação não podera ser revertida",
@@ -975,10 +988,10 @@ foreach ($produtos as $produto) {
               if (data.status === "success") {
                 // Remover produto da tela
                 produtoElement.remove();
-                
+
                 // Atualizar estatísticas
                 atualizarEstatisticas();
-                
+
                 Swal.fire({
                   title: "Excluído!",
                   text: data.message,
@@ -1017,15 +1030,21 @@ foreach ($produtos as $produto) {
 
 
   </script>
-<script>
-  const hamburguer = document.getElementById('hamburguer');
-  const navLinks = document.getElementById('nav-links');
+  <script>
+    const hamburguer = document.getElementById('hamburguer');
+    const navLinks = document.getElementById('nav-links');
+    const menu = document.querySelector('.menu');
+    const hamburguerIcon = document.getElementById('hamburguer-icon');
+    const title = document.getElementById('title');
 
-  hamburguer.addEventListener('click', () => {
-    hamburguer.classList.toggle('ativo');
-    navLinks.classList.toggle('show');
-  });
-</script>
+    hamburguer.addEventListener('click', () => {
+      hamburguer.classList.toggle('ativo');
+      navLinks.classList.toggle('show');
+      menu.classList.toggle('show');
+      hamburguerIcon.classList.toggle('show');
+      title.classList.toggle('show');
+    });
+  </script>
 
 </body>
 
