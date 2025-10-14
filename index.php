@@ -278,12 +278,11 @@ foreach ($produtos as $produto) {
         <h2>Equipe Desenvolvedora</h2>
         <ul>
           <p>Ana Lívia dos Santos Lopes</p>
-
           <p>Gabriel Reis de Brito</p>
-
           <p>Isadora Gomes da Silva</p>
-
           <p>Lucas Randal Abreu Balderrama</p>
+          <p>Guilherme Ricardo de Paiva</p>
+          <p>Flávia Glenda Guimarães Carvalho</p>
         </ul>
       </div>
 
