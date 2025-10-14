@@ -41,7 +41,13 @@ foreach ($produtos as $produto) {
   <div class="cabecalho">
     <div class="menu">
       <img src="./img/logo-candy-senfundo.png" alt="logo" class="logo">
-      <ul>
+  <div class="hamburguer" id="hamburguer">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+      <ul id="nav-links">
         <li><a href="index.php">Produtos</a></li>
         <li><a href="relatorios.php">Relatórios</a></li>
         <li><a href="perfil.php">Perfil</a></li>
@@ -268,7 +274,7 @@ foreach ($produtos as $produto) {
       <div class="contato">
         <h2>Informações de Contato</h2>
         <p><strong>Candy Stock:</strong></p>
-        <p>Endereço: Av. alguma, 90, Caçapava - SP, 12084-090</p>
+        <p>Endereço: Av. Brasil, 90, Caçapava - SP, 12084-090</p>
         <p>Telefone: (12) 9953-1976</p>
         <p>E-mail: candystock@gmail.com</p>
 
@@ -276,14 +282,14 @@ foreach ($produtos as $produto) {
 
       <div class="equipe">
         <h2>Equipe Desenvolvedora</h2>
-        <ul>
-          <p>Ana Lívia dos Santos Lopes</p>
-          <p>Gabriel Reis de Brito</p>
-          <p>Isadora Gomes da Silva</p>
-          <p>Lucas Randal Abreu Balderrama</p>
-          <p>Guilherme Ricardo de Paiva</p>
-          <p>Flávia Glenda Guimarães Carvalho</p>
-        </ul>
+         <ul>
+                    <a href="https://linktr.ee/analivialopess" target="_blank" class="conteudo-site"><li>Ana Lívia dos Santos Lopes</li></a>
+                    <a href="https://www.linkedin.com/in/fl%C3%A1via-glenda-1992a72b6/" target="_blank" class="conteudo-site"><li>Flávia Glenda Guimarães Carvalho</li></a>
+                    <a href="https://linktr.ee/gabrielreiss" target="_blank" class="conteudo-site"><li>Gabriel Reis de Brito</li></a>
+                    <a href="https://linktr.ee/guilhermedpaiva" target="_blank" class="conteudo-site"><li>Guilherme Ricardo de Paiva</li></a>
+                    <a href="https://linktr.ee/isadoragomess" target="_blank" class="conteudo-site"><li>Isadora Gomes da Silva</li></a>
+                    <a href="https://linktr.ee/lucasbalderrama"target="_blank" class="conteudo-site"><li>Lucas Randal Abreu Balderrama</li></a>
+                </ul>
       </div>
 
     </div>
@@ -1009,6 +1015,15 @@ foreach ($produtos as $produto) {
 
 
   </script>
+<script>
+  const hamburguer = document.getElementById('hamburguer');
+  const navLinks = document.getElementById('nav-links');
+
+  hamburguer.addEventListener('click', () => {
+    hamburguer.classList.toggle('ativo');
+    navLinks.classList.toggle('show');
+  });
+</script>
 
 </body>
 
